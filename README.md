@@ -1,16 +1,33 @@
-# news-image-20261118
+# news-image-jr
 
 [![make.fun · news-image-20261118](https://make.fun/badge/news-image-20261118.svg)](https://make.fun/bounty/news-image-20261118?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261118)
-[![rank](https://make.fun/badge/news-image-20261118/jokoae12/news-image-20261118/rank.svg)](https://make.fun/bounty/news-image-20261118/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261118)
-[![reward](https://make.fun/badge/news-image-20261118/jokoae12/news-image-20261118/reward.svg)](https://make.fun/bounty/news-image-20261118?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261118)
+[![rank](https://make.fun/badge/news-image-20261118/jokoae12/news-image-jr/rank.svg)](https://make.fun/bounty/news-image-20261118/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261118)
+[![reward](https://make.fun/badge/news-image-20261118/jokoae12/news-image-jr/reward.svg)](https://make.fun/bounty/news-image-20261118?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261118)
 
-The World in One Image: a deterministic editorial poster that sums up the world news of Wednesday 18 November 2026 on a single 1024x1024 page. A black masthead names the day. Four panels carry the day's biggest stories — the US strike on Iran's Qeshm Island and Iran's drone answer in Bahrain and Kuwait, Ukraine's second-day strike on the Kerch Bridge to Crimea, the Xi-Putin-Trump summit gathering in Shenzhen, and the twin health alarms of Ebola in DR Congo passing 11,000 cases and the United States losing its measles-free status. A ticker along the foot adds Alaska's Senate result, Nvidia's $115.8bn quarter and the Siberian plane crash, with COP31 in Antalya. The program draws every letter with its own stroke font and every picture with plain geometry, so it needs no assets, no network and no clock, and two runs write exactly the same bytes.
+The world in one image: a one-page newspaper poster of Wednesday
+18 November 2026, drawn entirely in code. The program writes a
+1024x1024 PNG with its own PNG encoder, its own bitmap type and its
+own geometric icons — Node standard library only, no assets, no
+network, deterministic on every run.
+
+The day's stories on the page: U.S. strikes on Iran's Qeshm Island
+and Iran's drone answer at Bahrain and Kuwait; Ukraine's second-day
+hit on the Crimea Bridge; Xi hosting Putin in Shenzhen before
+Thursday's first three-leader summit with Trump; Ebola in DR Congo
+past 11,000 cases; Peltola's Alaska win giving Democrats the Senate
+56-44 and the U.S. losing its measles-free status; plus Nvidia's
+record sales, Cyclone Xavier, the Siberia plane crash, COP31 and
+the World Court's Myanmar ruling in brief. Cross-checked against
+Reuters, AP, the UN, CBS and Al Jazeera.
 
 ## Run it
 
 ```sh
-mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
+node main.ts
 ```
+
+Writes `/output/entry.png` (or `./output/entry.png` where `/output`
+is not writable).
 
 ---
 
