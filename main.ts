@@ -306,7 +306,7 @@ function story(
 ): void {
   panel(x, y, w, h, bar, kicker, num);
   const afterHead = drawWrapped(x + 16, y + 50, headline, headScale, INK, headW, 8);
-  drawWrapped(x + 16, afterHead + 4, body, 2, GREY, bodyW, 3);
+  drawWrapped(x + 16, afterHead + 4, body, 3, GREY, bodyW, 5);
 }
 
 // One brief item: a coloured region tag, then the one-line story.
@@ -337,41 +337,29 @@ panel(32, 200, W - 64, 210, RED, "MIDDLE EAST - CONFLICT", "01");
 }
 
 // Row two: Crimea Bridge and the Shenzhen summit
-story(32, 420, 472, 168, BLUE, "EUROPE - WAR", "02",
+story(32, 420, 472, 196, BLUE, "EUROPE - WAR", "02",
   "UKRAINE HITS CRIMEA BRIDGE", 4, 440,
-  "SECOND-DAY STRIKE DROPS THE ROAD SPAN INTO THE KERCH STRAIT", 440);
-story(520, 420, 472, 168, GOLD, "ASIA - DIPLOMACY", "03",
+  "ROAD SPAN DROPS INTO THE KERCH STRAIT", 440);
+story(520, 420, 472, 196, GOLD, "ASIA - DIPLOMACY", "03",
   "XI HOSTS PUTIN IN SHENZHEN", 4, 440,
-  "TRUMP JOINS THURSDAY FOR THE FIRST U.S.-CHINA-RUSSIA SUMMIT", 440);
+  "TRUMP JOINS: FIRST U.S.-CHINA-RUSSIA SUMMIT", 440);
 
 // Row three: Ebola and the U.S. Senate
-story(32, 598, 472, 168, GREEN, "AFRICA - HEALTH", "04",
+story(32, 626, 472, 196, GREEN, "AFRICA - HEALTH", "04",
   "EBOLA PASSES 11,000 CASES", 4, 440,
-  "IN DR CONGO: 5,400+ DEAD, CASES DOUBLED IN 3 MONTHS - UN", 440);
-story(520, 598, 472, 168, TEAL, "AMERICAS - POLITICS", "05",
+  "5,400+ DEAD IN DR CONGO; DOUBLED IN 3 MONTHS", 440);
+story(520, 626, 472, 196, TEAL, "AMERICAS - POLITICS", "05",
   "PELTOLA WINS ALASKA", 4, 440,
-  "SENATE GOES 56-44 TO DEMOCRATS; U.S. LOSES MEASLES-FREE STATUS", 440);
+  "SENATE GOES 56-44 TO THE DEMOCRATS", 440);
 
-// Around the world: twelve more of the day's stories in brief
-fillRect(32, 776, W - 64, 168, WHITE);
-frameRect(32, 776, W - 64, 168, 3, INK);
-fillRect(32, 776, W - 64, 30, INK);
-drawText(48, 784, "AROUND THE WORLD - MORE OF THE DAY IN BRIEF", 2, WHITE);
-briefItem(48, 818, "GULF:", "HOUTHI DRONES HIT SAUDI PIPELINE", RED);
-briefItem(48, 837, "ISRAEL:", "KAHANA ELECTED KNESSET SPEAKER", RED);
-briefItem(48, 856, "GAZA:", "COLD KILLS IN TENTS OF DISPLACED", RED);
-briefItem(48, 875, "UKRAINE:", "KYIV BRIDGES SHUT BY STRIKES", BLUE);
-briefItem(48, 894, "TECH:", "AI FINDS CRITICAL FLAW IN JAVA", TEAL);
-briefItem(48, 913, "BUSINESS:", "NVIDIA RECORD 115.8BN SALES", GOLD);
-briefItem(520, 818, "ASIA:", "QUAD LEADERS MEET IN MANILA", GOLD);
-briefItem(520, 837, "PACIFIC:", "CYCLONE XAVIER, COOK ISLANDS", TEAL);
-briefItem(520, 856, "DISASTER:", "SIBERIA PLANE CRASH, 19 DEAD", INK);
-briefItem(520, 875, "JUSTICE:", "WORLD COURT, MYANMAR CASE", GREEN);
-briefItem(520, 894, "CLIMATE:", "COP31 OPENS IN ANTALYA", GREEN);
-briefItem(520, 913, "MARKETS:", "EUROPE SHARES FALL NEAR 2%", BLUE);
-
-// Sources strip
-drawTextCentered(W / 2, 962, "SOURCES: REUTERS - AP - AFP - UN - CBS - AL JAZEERA", 2, GREY);
+// Closing block: six more of the day's stories, still in big type
+fillRect(32, 832, W - 64, 160, INK);
+drawTextCentered(W / 2, 840, "HOUTHI DRONES HIT SAUDI OIL PIPELINE", 3, WHITE);
+drawTextCentered(W / 2, 864, "U.S. LOSES MEASLES-FREE STATUS AFTER 26 YEARS", 3, WHITE);
+drawTextCentered(W / 2, 888, "IN BRIEF - NVIDIA POSTS RECORD 115.8BN DOLLAR SALES", 3, WHITE);
+drawTextCentered(W / 2, 912, "CATEGORY 5 CYCLONE XAVIER HITS THE COOK ISLANDS", 3, WHITE);
+drawTextCentered(W / 2, 936, "SIBERIA PLANE CRASH KILLS 19 - COP31 IN ANTALYA", 3, WHITE);
+drawTextCentered(W / 2, 960, "WORLD COURT TO RULE ON MYANMAR GENOCIDE CASE", 3, WHITE);
 
 // ---------------------------------------------------------------- output
 const outDir = process.env.ENTRY_OUT ?? "/output";
