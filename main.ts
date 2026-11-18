@@ -306,7 +306,13 @@ function story(
 ): void {
   panel(x, y, w, h, bar, kicker, num);
   const afterHead = drawWrapped(x + 16, y + 50, headline, headScale, INK, headW, 8);
-  drawWrapped(x + 16, afterHead + 4, body, 3, GREY, bodyW, 5);
+  drawWrapped(x + 16, afterHead + 4, body, 2, GREY, bodyW, 3);
+}
+
+// One brief item: a coloured region tag, then the one-line story.
+function briefItem(x: number, y: number, tag: string, rest: string, c: Rgb): void {
+  drawText(x, y, tag, 2, c);
+  drawText(x + textWidth(tag, 2) + 12, y, rest, 2, INK);
 }
 
 // ---------------------------------------------------------------- poster
@@ -321,9 +327,9 @@ drawTextCentered(W / 2, 162, "WEDNESDAY - ALL THE DAY'S NEWS ON ONE PAGE", 3, GR
 fillRect(32, 192, W - 64, 6, INK);
 
 // Hero: the Gulf strikes
-panel(32, 206, W - 64, 216, RED, "MIDDLE EAST - CONFLICT", "01");
+panel(32, 200, W - 64, 210, RED, "MIDDLE EAST - CONFLICT", "01");
 {
-  const afterHead = drawWrapped(48, 256, "U.S. STRIKES IRAN'S QESHM ISLAND", 6, INK, 690, 8);
+  const afterHead = drawWrapped(48, 250, "U.S. STRIKES IRAN'S QESHM ISLAND", 6, INK, 690, 8);
   drawWrapped(48, afterHead + 4, "IRAN ANSWERS WITH DRONES ON U.S. BASES IN BAHRAIN + KUWAIT", 3, GREY, 660, 5);
   jet(856, 300, INK);
   island(856, 362, RED);
@@ -331,27 +337,41 @@ panel(32, 206, W - 64, 216, RED, "MIDDLE EAST - CONFLICT", "01");
 }
 
 // Row two: Crimea Bridge and the Shenzhen summit
-story(32, 438, 472, 208, BLUE, "EUROPE - WAR", "02",
+story(32, 420, 472, 168, BLUE, "EUROPE - WAR", "02",
   "UKRAINE HITS CRIMEA BRIDGE", 4, 440,
   "SECOND-DAY STRIKE DROPS THE ROAD SPAN INTO THE KERCH STRAIT", 440);
-story(520, 438, 472, 208, GOLD, "ASIA - DIPLOMACY", "03",
+story(520, 420, 472, 168, GOLD, "ASIA - DIPLOMACY", "03",
   "XI HOSTS PUTIN IN SHENZHEN", 4, 440,
   "TRUMP JOINS THURSDAY FOR THE FIRST U.S.-CHINA-RUSSIA SUMMIT", 440);
 
 // Row three: Ebola and the U.S. Senate
-story(32, 662, 472, 208, GREEN, "AFRICA - HEALTH", "04",
+story(32, 598, 472, 168, GREEN, "AFRICA - HEALTH", "04",
   "EBOLA PASSES 11,000 CASES", 4, 440,
   "IN DR CONGO: 5,400+ DEAD, CASES DOUBLED IN 3 MONTHS - UN", 440);
-story(520, 662, 472, 208, TEAL, "AMERICAS - POLITICS", "05",
+story(520, 598, 472, 168, TEAL, "AMERICAS - POLITICS", "05",
   "PELTOLA WINS ALASKA", 4, 440,
   "SENATE GOES 56-44 TO DEMOCRATS; U.S. LOSES MEASLES-FREE STATUS", 440);
 
-// Ticker: the rest of the day in brief
-fillRect(32, 886, W - 64, 106, INK);
-drawTextCentered(W / 2, 892, "IN BRIEF - NVIDIA POSTS RECORD 115.8BN DOLLAR SALES", 3, WHITE);
-drawTextCentered(W / 2, 917, "CATEGORY 5 CYCLONE XAVIER HITS THE COOK ISLANDS", 3, WHITE);
-drawTextCentered(W / 2, 942, "SIBERIA PLANE CRASH KILLS 19 - COP31 IN ANTALYA", 3, WHITE);
-drawTextCentered(W / 2, 967, "WORLD COURT TO RULE ON MYANMAR GENOCIDE CASE", 3, WHITE);
+// Around the world: twelve more of the day's stories in brief
+fillRect(32, 776, W - 64, 168, WHITE);
+frameRect(32, 776, W - 64, 168, 3, INK);
+fillRect(32, 776, W - 64, 30, INK);
+drawText(48, 784, "AROUND THE WORLD - MORE OF THE DAY IN BRIEF", 2, WHITE);
+briefItem(48, 818, "GULF:", "HOUTHI DRONES HIT SAUDI PIPELINE", RED);
+briefItem(48, 837, "ISRAEL:", "KAHANA ELECTED KNESSET SPEAKER", RED);
+briefItem(48, 856, "GAZA:", "COLD KILLS IN TENTS OF DISPLACED", RED);
+briefItem(48, 875, "UKRAINE:", "KYIV BRIDGES SHUT BY STRIKES", BLUE);
+briefItem(48, 894, "TECH:", "AI FINDS CRITICAL FLAW IN JAVA", TEAL);
+briefItem(48, 913, "BUSINESS:", "NVIDIA RECORD 115.8BN SALES", GOLD);
+briefItem(520, 818, "ASIA:", "QUAD LEADERS MEET IN MANILA", GOLD);
+briefItem(520, 837, "PACIFIC:", "CYCLONE XAVIER, COOK ISLANDS", TEAL);
+briefItem(520, 856, "DISASTER:", "SIBERIA PLANE CRASH, 19 DEAD", INK);
+briefItem(520, 875, "JUSTICE:", "WORLD COURT, MYANMAR CASE", GREEN);
+briefItem(520, 894, "CLIMATE:", "COP31 OPENS IN ANTALYA", GREEN);
+briefItem(520, 913, "MARKETS:", "EUROPE SHARES FALL NEAR 2%", BLUE);
+
+// Sources strip
+drawTextCentered(W / 2, 962, "SOURCES: REUTERS - AP - AFP - UN - CBS - AL JAZEERA", 2, GREY);
 
 // ---------------------------------------------------------------- output
 const outDir = process.env.ENTRY_OUT ?? "/output";
